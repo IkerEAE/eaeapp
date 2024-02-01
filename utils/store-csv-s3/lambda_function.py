@@ -1,4 +1,4 @@
-import json
+import jso
 import base64
 import boto3
 
