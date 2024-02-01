@@ -3,7 +3,7 @@ import base64
 import boto3
 
 s3 = boto3.client('s3')
-BUCKET_NAME = 'eae-csvs-ike'
+BUCKET_NAME = 'eae-csvs-iker'
 
 def lambda_handler(event, context):
     content_type = event['headers']['content-type']
