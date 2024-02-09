@@ -8,9 +8,9 @@ s3_client = boto3.client('s3')
 
 def lambda_handler(event, context):
     # RDS settings
-    db_host  = ''
-    db_name = ''
-    db_user = 'admin'
+    db_host  = 'database-1.c10w0m2agxq6.us-east-1.rds.amazonaws.com'
+    db_name = 'postgres'
+    db_user = 'postgres'
     db_password = 'secret01'
     db_table = 'salaries'
 
