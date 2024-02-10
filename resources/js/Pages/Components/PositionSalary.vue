@@ -22,10 +22,10 @@ export default defineComponent({
 
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://48fk51szmi.execute-api.us-east-1.amazonaws.com/dev/salaries/remote-ratio');
+                const response = await axios.get('https://48fk51szmi.execute-api.us-east-1.amazonaws.com/dev/salaries/position');
                 const data = JSON.parse(response.data.data);
-                const labels = data.map(item => item.remote_type);
-                const values = data.map(item => item.remote_count);
+                const labels = data.map(item => item.job_title);
+                const values = data.map(item => item.average_salary);
 
                 chartData.value = {
                     labels: labels,
