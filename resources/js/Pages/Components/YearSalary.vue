@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white shadow-md border border-gray-200 py-4 px-4 rounded-lg">
-        <h3 class="pb-3">Salarios / País</h3>
+        <h3 class="pb-3">Salarios / Year</h3>
     <LineChart :chartData="testData" :options="options" />
     </div>
 </template>
