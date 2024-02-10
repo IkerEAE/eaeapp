@@ -7,15 +7,15 @@
 
 <script>
 import { defineComponent, onMounted, ref } from 'vue';
-import { LineChart } from 'vue-chart-3'; // Importar LineChart
+import { LineChart } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 import axios from 'axios';
 
 Chart.register(...registerables);
 
 export default defineComponent({
-    name: 'YearChart', // Cambiar el nombre del componente
-    components: { LineChart }, // Usar LineChart en lugar de DoughnutChart
+    name: 'YearChart',
+    components: { LineChart },
     setup() {
         const chartData = ref({});
 
@@ -30,8 +30,10 @@ export default defineComponent({
                     labels: labels,
                     datasets: [
                         {
-                            label: 'Average Salary', // Etiqueta del conjunto de datos
+                            label: 'Average Salary',
                             data: values,
+                            borderColor: '#77CEFF', // Color de la línea
+                            backgroundColor: 'rgba(119, 206, 255, 0.2)', // Color de fondo de la línea
                         },
                     ],
                 }
@@ -45,9 +47,16 @@ export default defineComponent({
             fetchData();
         });
 
-        const options = {} // Opciones predeterminadas
+        const options = {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
 
         return { chartData, options };
     },
 });
 </script>
+
