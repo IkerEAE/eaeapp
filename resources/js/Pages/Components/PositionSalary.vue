@@ -1,13 +1,13 @@
 <template>
     <div class="bg-white shadow-md border border-gray-200 py-4 px-4 rounded-lg">
         <h3 class="pb-3">Position</h3>
-        <PieChart :chartData="chartData" :options="options"  />
+        <DoughnutChart :chartData="chartData" :options="options" />
     </div>
 </template>
 
 <script>
 import { defineComponent, onMounted, ref } from 'vue';
-import { PieChart } from 'vue-chart-3';
+import { DoughnutChart } from 'vue-chart-3'; // Importa DoughnutChart en lugar de PieChart
 import { Chart, registerables } from "chart.js";
 import axios from 'axios';
 
@@ -15,9 +15,8 @@ Chart.register(...registerables);
 
 export default defineComponent({
     name: 'Position',
-    components: { PieChart },
+    components: { DoughnutChart }, // Usa DoughnutChart en lugar de PieChart
     setup() {
-
         const chartData = ref({});
 
         const fetchData = async () => {
