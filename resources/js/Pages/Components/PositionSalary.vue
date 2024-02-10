@@ -7,7 +7,7 @@
 
 <script>
 import { defineComponent, onMounted, ref } from 'vue';
-import { DoughnutChart } from 'vue-chart-3'; // Importa DoughnutChart en lugar de PieChart
+import { DoughnutChart } from 'vue-chart-3'; 
 import { Chart, registerables } from "chart.js";
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ Chart.register(...registerables);
 
 export default defineComponent({
     name: 'Position',
-    components: { DoughnutChart }, // Usa DoughnutChart en lugar de PieChart
+    components: { DoughnutChart }, 
     setup() {
         const chartData = ref({});
 
