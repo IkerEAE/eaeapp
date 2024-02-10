@@ -24,8 +24,8 @@ export default defineComponent({
             try {
                 const response = await axios.get('https://48fk51szmi.execute-api.us-east-1.amazonaws.com/dev/salaries/position');
                 const data = JSON.parse(response.data.data);
-                const labels = data.map(item => item.position_type);
-                const values = data.map(item => item.position_count);
+                const labels = data.map(item => item.remote_type);
+                const values = data.map(item => item.remote_count);
 
                 chartData.value = {
                     labels: labels,
