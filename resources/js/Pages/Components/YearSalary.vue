@@ -32,8 +32,8 @@ export default defineComponent({
                         {
                             label: 'Average Salary',
                             data: values,
-                            borderColor: '#77CEFF', // Color de la línea
-                            backgroundColor: 'rgba(119, 206, 255, 0.2)', // Color de fondo de la línea
+                            borderColor: '#77CEFF', 
+                            backgroundColor: 'rgba(119, 206, 255, 0.2)', 
                         },
                     ],
                 }
@@ -50,7 +50,7 @@ export default defineComponent({
         const options = {
             plugins: {
                 legend: {
-                    display: false
+                    display: true
                 }
             }
         }
