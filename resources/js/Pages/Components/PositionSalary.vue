@@ -1,23 +1,30 @@
 <template>
     <div class="bg-white shadow-md border border-gray-200 py-4 px-4 rounded-lg">
-        <h3 class="pb-3">Position</h3>
-        <DoughnutChart :chartData="chartData" :options="options" />
+        <h3 class="pb-3">Salarios por Posición</h3>
+        <BarChart :chartData="chartData" :options="options"  />
     </div>
 </template>
 
 <script>
 import { defineComponent, onMounted, ref } from 'vue';
-import { DoughnutChart } from 'vue-chart-3'; 
+import { BarChart } from 'vue-chart-3';
 import { Chart, registerables } from "chart.js";
 import axios from 'axios';
 
 Chart.register(...registerables);
 
 export default defineComponent({
-    name: 'Position',
-    components: { DoughnutChart }, 
+    name: 'SalaryPosition',
+    components: { BarChart },
     setup() {
+
         const chartData = ref({});
+
+        const numberToColor = function(number, min, max) {
+            let normalized = (number - min) / (max - min);
+            let hue = (250 + normalized * (-60)).toFixed(1);
+            return `hsl(${hue}, 70%, 50%)`;
+        }
 
         const fetchData = async () => {
             try {
@@ -25,13 +32,16 @@ export default defineComponent({
                 const data = JSON.parse(response.data.data);
                 const labels = data.map(item => item.job_title);
                 const values = data.map(item => item.average_salary);
+                const min = Math.min(...values);
+                const max = Math.max(...values);
+                const colors = values.map(item => numberToColor(item, min, max));
 
                 chartData.value = {
                     labels: labels,
                     datasets: [
                         {
                             data: values,
-                            backgroundColor: ['#77CEFF', '#0079AF', '#123E6B']
+                            backgroundColor: colors,
                         },
                     ],
                 }
@@ -48,7 +58,7 @@ export default defineComponent({
         const options = {
             plugins: {
                 legend: {
-                    display: true
+                    display: false
                 }
             }
         }
